@@ -1,0 +1,18 @@
+<h1>User Info</h1>
+  <%= image_tag('no_image.jpg')%>
+  <p>name:<%= userr.name %></p>
+  <p>introduction:<%= userr.introduction %></p>
+
+  <% if @userr.id == current_user.id %>
+    <p><%= link_to "Profile_edit", edit_user_path(@userr) %></p>
+  
+
+
+<h1>NewBook</h1>
+  <%= form_with model: @book, local:true do |f| %>
+    <h4>Title</h4>
+      <%= f.text_field :title %>
+    <h4>Opinion</h4>
+      <%= f.text_area :body %>
+      <%= f.submit 'submit' %>
+  <% end %>

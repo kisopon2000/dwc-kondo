@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BookersV2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+        <li>
+          <%= link_to "HOME", root_path %>
+        </li>
+
+      <% if user_signed_in? %>
+        <li>
+          <%= link_to "USERS", users_path %>
+        </li>
+
+        <li>
+          <%= link_to "BOOKS", books_path %>
+        </li>
+
+        <li>
+          <%= link_to "LOG OUT", destroy_user_session_path, method: :delete %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to "ABOUT", about_path %>
+        </li>
+
+        <li>
+          <%= link_to "SIGN_UP", new_user_registration_path %>
+        </li>
+
+        <li>
+          <%= link_to "LOG IN", new_user_session_path %>
+        </li>
+      <% end %>
+
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
+
+    <%= yield %>
+
+    <footer>
+      <p>CopyRight Infratop.inc</p>
+    </footer>
+  </body>
+</html>

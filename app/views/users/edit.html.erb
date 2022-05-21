@@ -1,0 +1,24 @@
+<h2>EDIT</h2>
+
+<% if @userr.errors.any? %>
+  <div class ="alert">
+    <%= @userr.errors.count %>件のエラーが見つかりました。
+      <% @userr.errors.full_messages.each do |message| %>
+        <p><%= message %></li>
+      <% end %>
+  </div>
+<% end %>
+
+<%= form_with model: @userr, local:true do |f| %>
+  <label for="inputName">Name</label>
+  <%= f.text_field :name, autfocus: true, id:"inputName", placeholder:"名前"%>
+
+  <p>Introduction</p>
+  <%= f.text_field :introduction, autfocus: true, id:"introduction", placeholder:"イントロダクション"%>
+
+  <p>profile_image</p>
+  <%= f.attachment_field :profile_image, placeholder:"プロフィール画像" %>
+
+  <%= f.submit "SUBMIT" %>
+
+<% end %>
